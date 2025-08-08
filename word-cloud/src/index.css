@@ -1,0 +1,52 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 50px;
+}
+.header__image {
+  max-width: 140px;
+  border-radius: 50px;
+}
+.word-cloud {
+  display: flex;
+  align-items: center;
+}
+.word-cloud__container {
+  position: relative;
+  width: 1000px;
+  height: 600px;
+}
+.word-cloud__word {
+  position: absolute;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+}
+.selected {
+  text-decoration: underline;
+}
+.info-panel {
+  padding: 10px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  color: black;
+  flex: 1;
+  height: 100%;
+}
+.info-panel__positive {
+  color: green;
+}
+.info-panel__negative {
+  color: red;
+}
+.info-panel__group {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+.info-panel__total {
+  margin-top: 10px;
+}
