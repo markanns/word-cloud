@@ -6,6 +6,15 @@ import type { Layout } from "../types/layout";
 import type { Word } from "../types/word";
 import { getFontSizePercentile } from "../utils/getFontSize";
 
+/**
+ * Custom hook for generating word cloud layout using D3
+ *
+ * Uses D3-cloud algorithm to calculate optimal positioning for topics
+ * based on their volume (determines font size) and ensures no overlap
+ *
+ * @param topics - Array of topic objects with labels and volumes
+ * @returns Array of positioned elements ready for rendering
+ */
 export const useWordCloud = (topics: Topic[]) => {
   const [positions, setPositions] = useState<Position[]>([]);
 

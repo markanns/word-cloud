@@ -1,69 +1,102 @@
-# React + TypeScript + Vite
+# Word Cloud Visualization
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive word cloud application built with React, TypeScript, and D3.js that visualizes topic data with sentiment analysis.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Interactive Word Cloud**: Click on topics to view detailed information
+- **Sentiment-based Coloring**: Topics are colored based on sentiment scores (green=positive, red=negative, grey=neutral)
+- **Dynamic Sizing**: Word size reflects topic volume/popularity
+- **Responsive Layout**: Optimized positioning using D3 cloud layout algorithm
+- **Detailed Info Panel**: Shows mention counts and sentiment breakdown
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React 19** with TypeScript
+- **D3.js** for word cloud layout calculation
+- **Vite** for fast development and building
+- **ESLint** for code quality
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Prerequisites
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Node.js (v20.19 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone <repository-url>
+cd word-cloud
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Install dependencies:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm install
+```
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+3. Start the development server:
+
+```bash
+npm run dev
+```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+## Project Structure
+
+```
+src/
+├── components/          # React components
+│   ├── Header.tsx      # App header with title
+│   ├── InfoPanel.tsx   # Topic details panel
+│   ├── WordCloudButton.tsx    # Individual word buttons
+│   └── WordCloudContainer.tsx # Word cloud wrapper
+├── hooks/
+│   └── useWordCloud.ts # D3 word cloud logic
+├── types/              # TypeScript type definitions
+├── utils/              # Utility functions
+│   ├── getColor.ts     # Sentiment-based coloring
+│   └── getFontSize.ts  # Volume-based font sizing
+└── topics.json         # Sample topic data
+```
+
+## How It Works
+
+1. **Data Loading**: Topics are loaded from `topics.json` with volume and sentiment data
+2. **Layout Calculation**: D3-cloud calculates optimal positioning for each word
+3. **Rendering**: React renders positioned words as interactive buttons
+4. **Interaction**: Clicking words shows detailed sentiment breakdown
+
+## Data Format
+
+Topics should follow this structure:
+
+```typescript
+{
+  "topics": [
+    {
+      "label": "Topic Name",
+      "volume": 165,
+      "sentimentScore": 65,
+      "sentiment": {
+        "positive": 29,
+        "neutral": 133,
+        "negative": 3
+      }
+    }
+  ]
+}
+
 ```
