@@ -1,4 +1,3 @@
-import "./App.css";
 import cloud from "d3-cloud";
 import { useState, useEffect } from "react";
 import topicsData from "./topics.json";
