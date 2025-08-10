@@ -29,7 +29,6 @@ An interactive word cloud application built with React, TypeScript, and D3.js th
 1. Clone the repository:
 
 ```bash
-git clone <repository-url>
 cd word-cloud
 ```
 
@@ -53,24 +52,6 @@ npm run dev
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint
-
-## Project Structure
-
-```
-src/
-├── components/          # React components
-│   ├── Header.tsx      # App header with title
-│   ├── InfoPanel.tsx   # Topic details panel
-│   ├── WordCloudButton.tsx    # Individual word buttons
-│   └── WordCloudContainer.tsx # Word cloud wrapper
-├── hooks/
-│   └── useWordCloud.ts # D3 word cloud logic
-├── types/              # TypeScript type definitions
-├── utils/              # Utility functions
-│   ├── getColor.ts     # Sentiment-based coloring
-│   └── getFontSize.ts  # Volume-based font sizing
-└── topics.json         # Sample topic data
-```
 
 ## How It Works
 
