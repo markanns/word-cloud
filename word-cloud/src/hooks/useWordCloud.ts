@@ -17,12 +17,14 @@ import { getFontSizePercentile } from "../utils/getFontSize";
  */
 export const useWordCloud = (topics: Topic[]) => {
   const [positions, setPositions] = useState<Position[]>([]);
-
+  const windowWidth = window.innerWidth;
   const volumes = useMemo(() => topics.map((t) => t.volume), [topics]);
 
   useEffect(() => {
-    const containerWidth = 1000;
-    const containerHeight = 600;
+    const containerWidth =
+      windowWidth < 1200 ? 800 : windowWidth < 600 ? 600 : 1000;
+    const containerHeight =
+      windowWidth < 1200 ? 400 : windowWidth < 600 ? 300 : 600;
 
     const words = topics.map((topic) => ({
       text: topic.label,
